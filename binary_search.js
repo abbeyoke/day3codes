@@ -24,7 +24,7 @@ Array.prototype.toOneThousand = function(){
 }
 
 
-function binarySearch(value){
+Array.prototype.search = function(value){
  // var this = [];
   //this = this.toTwenty();
   var startIndex  = 0,
@@ -32,18 +32,19 @@ function binarySearch(value){
   middle = Math.floor((stopIndex + startIndex)/2);
   var count = 0;
   while(this[middle] != value && startIndex < stopIndex){
-    count+=1;
+    
     if (value < this[middle]){
       stopIndex = middle - 1;
     }else if (value > this[middle]){
       startIndex = middle + 1;
     }
     middle = Math.floor((stopIndex + startIndex)/2);
+	count+=1;
   } 
   var l = 0;
   l = this.length;
   var index = (this[middle] != value) ? -1 : middle;
-  return ['index : ' + index, "count : " + count, "Length : "+ l]
+  return {index:index, count :count, Length : l}
 }
 
 module.exports = Array.prototype;
